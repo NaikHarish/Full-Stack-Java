@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments::pageHeader">
+
+<title>Department List</title>
+
+</head>
+<body class="container">
+	<div th:insert="fragments :: menu"></div>
+	<div class="container my-2">
+		<div class="card">
+			<div class="card-body">
+				<div th:switch="${depts}" class="container my-5">
+					<p class="my-5">
+						<a href="/deptRegister" class="btn btn-primary"><i
+							class="fas fa-user-plus ml-2"> Add Department </i></a>
+					</p>
+					<div class="col-md-10">
+						<div class="alert alert-warning" th:if="${successMessage}"></div>
+						<h2 th:case="null">No Department yet!</h2>
+						<div th:case="*">
+							<table class="table table-striped table-responsive-md">
+								<thead>
+									<tr>
+										<th>Department Name</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="department : ${depts}">
+										<!-- 1 -->
+										<td th:text="${department.deptName}"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert = "fragments::pageHeader">
+<meta charset="ISO-8859-1">
+<title>Add Patient Details</title>
+</head>
+<body class="container">
+<div th:insert="fragments::menu"></div>
+
+<h1>Add Patient Details</h1>
+	<form th:action="@{/savePatient}" th:object="${patient}" method="post"
+		class="form needs-validation">
+		<div class="form-group">
+			<label for="patientFirstName">Patient First Name</label> <input
+				class="form-control" type="text" th:field="*{patientFirstName}"
+				id="patientFirstName" placeholder="Enter Patient First Name">
+			<div th:if="${#fields.hasErrors('patientFirstName')}"
+				th:errors="*{patientFirstName}"></div>
+		</div>
+
+		<div class="form-group">
+			<label for="patientLastName">Patient Last Name</label> <input
+				class="form-control" type="text" th:field="*{patientLastName}"
+				id="patientLastName" placeholder="Enter Last Name">
+			<div class="alert alert-warning"
+				th:if="${#fields.hasErrors('patientLastName')}"
+				th:errors="*{patientLastName}"></div>
+		</div>
+
+		<div class="form-group">
+			<label for="age">Age</label> <input class="form-control"
+				type="number" th:field="*{age}" id="age"
+				placeholder="Enter Room No">
+			<div class="alert alert-warning"
+				th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></div>
+		</div>
+
+		<div class="form-group">
+			<label for="gender">Gender</label> <input
+				class="form-control" type="text" th:field="*{gender}"
+				id="gender" placeholder="Enter gender">
+			<div class="alert alert-warning"
+				th:if="${#fields.hasErrors('gender')}"
+				th:errors="*{gender}"></div>
+		</div>
+		
+		<div class="form-group">
+			<label for="emailId">Email Id</label> <input
+				class="form-control" type="email" th:field="*{emailId}"
+				id="emailId" placeholder="Enter Email Id">
+			<div class="alert alert-warning"
+				th:if="${#fields.hasErrors('emailId')}"
+				th:errors="*{emailId}"></div>
+		</div>
+
+		<div class="form-group">
+			<label for="contactNo">Contact No</label> <input class="form-control"
+				type="tel" th:field="*{contactNo}" id="contactNo"
+				placeholder="Enter Contact No">
+			<div class="alert alert-warning"
+				th:if="${#fields.hasErrors('contactNo')}" th:errors="*{contactNo}"></div>
+		</div>
+
+		<div class="form-group">
+			<label for="alternativeNo">Alternate No</label> <input
+				class="form-control" type="tel" th:field="*{alternativeNo}"
+				id="alternativeNo" placeholder="Enter Alternate No">
+			<div class="alert alert-warning"
+				th:if="${#fields.hasErrors('alternativeNo')}"
+				th:errors="*{alternativeNo}"></div>
+		</div>
+		
+		<div class="form-group">
+			<label for="password">Password</label> <input class="form-control"
+				type="password" th:field="*{password}" id="password"
+				placeholder="Enter Password">
+			<div class="alert alert-warning"
+				th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+		</div>
+
+		<div class="form-group">
+			<label for="address">Address</label> <input class="form-control"
+				type="text" th:field="*{address}" id="address"
+				placeholder="Enter address">
+			<div class="alert alert-warning"
+				th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
+		</div>
+
+		<input type="submit" class="btn btn-primary mb-3" value="Add Patient">
+		<a th:href="@{/getPatients}"
+			class=" btn btn-primary btn-md mb-3 float-right"> Patient List</a>
+	</form>
+
+</body>
+</html>
